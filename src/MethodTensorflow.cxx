@@ -3,12 +3,15 @@
 namespace TMVA{
 
     void MethodTensorflow::Init(){
+        // Load the graph
+        Log() << kERROR << "Input graph: " << filepathInputGraph << Endl;
     }
 
     void MethodTensorflow::Train(){
     }
 
     void MethodTensorflow::DeclareOptions(){
+        DeclareOptionRef(filepathInputGraph="foo.pb", "filepathInputGraph", "Path to file which contains input graph");
     }
 
     void MethodTensorflow::ProcessOptions(){
@@ -19,7 +22,7 @@ namespace TMVA{
     }
 
     const Ranking* MethodTensorflow::CreateRanking(){
-        Log() << kWARNING << "Creating a ranking is not yet implemented." << Endl;
+        Log() << kWARNING << "Creating a variable ranking is not yet implemented." << Endl;
         return 0;
     }
 
@@ -30,7 +33,7 @@ namespace TMVA{
     }
 
     void MethodTensorflow::ReadWeightsFromStream(std::istream&){
-        Log() << kERROR << "Dont' use this option!" << Endl;
+        Log() << kERROR << "Don't use this option, it's deprecated!" << Endl;
     }
 
 } // namespace TMVA

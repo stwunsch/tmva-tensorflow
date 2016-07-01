@@ -7,14 +7,18 @@
 #ifndef ROOT_TMVA_METHODTENSORFLOW
 #define ROOT_TMVA_METHODTENSORFLOW
 
+#include <string>
+
 #include <TMVA/MethodBase.h>
+
+#include "tensorflow/core/public/session.h"
 
 namespace TMVA{
 
     class MethodTensorflow : public MethodBase {
 
     public:
-        /**
+        /*
         * Constructor for training and reading
         * @param jobName unkown
         * @param methodTitle title of the method
@@ -28,7 +32,7 @@ namespace TMVA{
             const TString& theOption = "",
             TDirectory* theTargetDir = 0);
 
-        /**
+        /*
         * Constructor for calculating graph output of previously trained graphs
         * @param theData data which should be classified
         * @param theWeightFile the xml file from which the method reads the weights
@@ -58,6 +62,11 @@ namespace TMVA{
         void AddWeightsXMLTo(void* parent) const;
         void ReadWeightsFromXML(void* wghtnode);
         void ReadWeightsFromStream(std::istream&); // backward compatibility
+
+    protected:
+        tensorflow::Session* session;
+        tensorflow::GraphDef graph;
+        std::string filepathInputGraph;
 
     }; // class MethodTensorflow
 

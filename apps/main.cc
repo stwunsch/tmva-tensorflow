@@ -1,10 +1,8 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 #include "tensorflow/core/public/session.h"
-
-tensorflow::Status LoadGraph(){
-}
 
 int main(){
     std::cout << "Test" << std::endl;
@@ -25,6 +23,9 @@ int main(){
     tensorflow::Status s = session->Create(graph);
     if (!s.ok()) { std::cout << "Sth went wrong!" << std::endl; }
     else std::cout << "Session is created!" << std::endl;
+
+    // Run session
+    //session->Run();
 
     // Close the session to release the resources associated with
     // this session.

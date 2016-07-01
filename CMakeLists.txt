@@ -20,7 +20,7 @@ find_package(Tensorflow)
 list(APPEND TENSORFLOW_INCLUDE_DIRS /home/stefan/src/tensorflow/tensorflow/contrib/makefile/gen/proto)
 list(APPEND TENSORFLOW_INCLUDE_DIRS /home/stefan/src/tensorflow/tensorflow/contrib/makefile/downloads)
 list(APPEND TENSORFLOW_INCLUDE_DIRS /home/stefan/src/tensorflow/tensorflow/contrib/makefile/downloads/eigen-eigen-334b1d428283)
-message(WARNING "TENSORFLOW_INCLUDE_DIRS: " ${TENSORFLOW_INCLUDE_DIRS})
+#message(WARNING "TENSORFLOW_INCLUDE_DIRS: " ${TENSORFLOW_INCLUDE_DIRS})
 
 # Build shared library/plugin for TMVA
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include ${ROOT_INCLUDE_DIRS} ${TENSORFLOW_INCLUDE_DIRS})
