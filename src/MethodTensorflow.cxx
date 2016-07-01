@@ -1,5 +1,4 @@
 #include "MethodTensorflow.h"
-#include "TMVA/ClassifierFactory.h"
 
 namespace TMVA{
 
@@ -35,19 +34,6 @@ namespace TMVA{
 
     void MethodTensorflow::ReadWeightsFromStream(std::istream&){
         Log() << kERROR << "Don't use this option, it's deprecated!" << Endl;
-    }
-
-    void MethodTensorflow::Register(){
-        ClassifierFactory::Instance().Register("Tensorflow", CreateMethod);
-        Types::Instance().AddTypeMapping(Types::kPlugins, "Tensorflow");
-    }
-
-    IMethod* MethodTensorflow::CreateMethod(const TString& job, const TString& title, DataSetInfo& datasetinfo, const TString& option){
-        if(job=="" && title==""){
-            return (IMethod*) new MethodTensorflow(datasetinfo, option);
-        }else{
-            return (IMethod*) new MethodTensorflow(job, title, datasetinfo, option);
-        }
     }
 
     void MethodTensorflow::GetHelpMessage() const{

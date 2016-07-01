@@ -61,8 +61,8 @@ void TMVAUsage(){
         "!H:!V:NTrees=850:MinNodeSize=2.5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.5:SeparationType=GiniIndex:nCuts=20" );
 
     // Load tensorflow plugin and book method as well
-    gSystem->Load("../build/libMethodTensorflow.so");
-    TMVA::MethodTensorflow::Register();
+    gPluginMgr->AddHandler("TMVA@@MethodBase", "Tensorflow", "TMVA::MethodTensorflow", "MethodTensorflow", "MethodTensorflow(TString&,TString&,DataSetInfo&,TString&)");
+    gPluginMgr->Print();
     factory->BookMethod(dataloader, TMVA::Types::kPlugins, "Tensorflow",
         "!H:V:FilepathGraph=test.it");
 
@@ -88,5 +88,5 @@ void TMVAUsage(){
      * Launch GUI
      */
 
-     TMVA::TMVAGui(outfileName);
+     //TMVA::TMVAGui(outfileName);
 }
