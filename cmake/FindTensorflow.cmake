@@ -1,6 +1,6 @@
 FIND_PATH(
     TENSORFLOW_INCLUDE_DIRS
-    NAMES tensorflow/cc/ops/const_op.h
+    NAMES tensorflow/core/public/session.h
     HINTS $ENV{TENSORFLOW_DIR}
 )
 
