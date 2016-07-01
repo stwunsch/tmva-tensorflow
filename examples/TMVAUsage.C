@@ -54,19 +54,25 @@ void TMVAUsage(){
      * Book methods and train/evaluate them
      */
 
-    // Book methods
-    factory->BookMethod( dataloader, TMVA::Types::kFisher, "Fisher",
+    // Book methods from TMVA
+    factory->BookMethod(dataloader, TMVA::Types::kFisher, "Fisher",
         "H:!V:Fisher:VarTransform=None:CreateMVAPdfs:PDFInterpolMVAPdf=Spline2:NbinsMVAPdf=50:NsmoothMVAPdf=10" );
-    factory->BookMethod( dataloader, TMVA::Types::kBDT, "BDT",
+    factory->BookMethod(dataloader, TMVA::Types::kBDT, "BDT",
         "!H:!V:NTrees=850:MinNodeSize=2.5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.5:SeparationType=GiniIndex:nCuts=20" );
+
+    // Load tensorflow plugin and book method as well
+    gSystem->Load("../build/libMethodTensorflow.so");
+    TMVA::MethodTensorflow::Register();
+    factory->BookMethod(dataloader, TMVA::Types::kPlugins, "Tensorflow",
+        "!H:V:FilepathGraph=test.it");
 
     // Train MVAs using the set of training events
     factory->TrainAllMethods();
 
-    // ---- Evaluate all MVAs using the set of test events
+    // Evaluate all MVAs using the set of test events
     factory->TestAllMethods();
 
-    // ----- Evaluate and compare performance of all configured MVAs
+    // Evaluate and compare performance of all configured MVAs
     factory->EvaluateAllMethods();
 
     /*

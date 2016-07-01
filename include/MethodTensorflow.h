@@ -10,6 +10,7 @@
 #include <string>
 
 #include <TMVA/MethodBase.h>
+#include <TMVA/IMethod.h>
 
 #include "tensorflow/core/public/session.h"
 
@@ -58,15 +59,24 @@ namespace TMVA{
         // Create ranking
         const Ranking* CreateRanking();
 
+        // Register the method in the plugin handler
+        static void Register();
+
+        // Print help message
+	    void GetHelpMessage() const;
+
     protected:
-        void AddWeightsXMLTo(void* parent) const;
-        void ReadWeightsFromXML(void* wghtnode);
+        void AddWeightsXMLTo(void*) const;
+        void ReadWeightsFromXML(void*);
         void ReadWeightsFromStream(std::istream&); // backward compatibility
+		Bool_t HasAnalysisType(Types::EAnalysisType, UInt_t, UInt_t);
+
+        static IMethod* CreateMethod(const TString&, const TString&, DataSetInfo&, const TString&);
 
     protected:
         tensorflow::Session* session;
         tensorflow::GraphDef graph;
-        std::string filepathInputGraph;
+        std::string fFilepathGraph;
 
     }; // class MethodTensorflow
 
