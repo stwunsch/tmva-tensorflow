@@ -21,6 +21,6 @@ include(${ROOT_USE_FILE})
 
 # Build TMVA plugin
 include_directories(${CMAKE_SOURCE_DIR}/inc)
-ROOT_GENERATE_DICTIONARY(MethodTensorflow_Dict MethodTensorflow.h LINKDEF LinkDef.h)
-add_library(TMVATensorflow SHARED src/MethodTensorflow.cxx MethodTensorflow_Dict.cxx)
+ROOT_GENERATE_DICTIONARY(G__MethodTensorflow MethodTensorflow.h LINKDEF LinkDef.h)
+add_library(TMVATensorflow SHARED src/MethodTensorflow.cxx G__MethodTensorflow.cxx)
 target_link_libraries(TMVATensorflow ${ROOT_LIBRARIES})

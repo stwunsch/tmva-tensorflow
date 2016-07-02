@@ -4,7 +4,7 @@ project(tmva-tensorflow-examples)
 # Find ROOT
 find_package(ROOT REQUIRED)
 include(${ROOT_USE_FILE})
-list(APPEND ROOT_LIBRARIES "${ROOTSYS}/build/lib/libTMVA.so")
+list(APPEND ROOT_LIBRARIES "${ROOTSYS}/lib/libTMVA.so")
 
 # Build target
 add_executable(TMVAUsage TMVAUsage.C)

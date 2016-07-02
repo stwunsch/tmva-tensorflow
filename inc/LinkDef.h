@@ -4,6 +4,6 @@
 #pragma link off all classes;
 #pragma link off all functions;
 
-#pragma link C++ class MethodTensorflow+;
+#pragma link C++ class TMVA::MethodTensorflow+;
 
 #endif // __CINT__
