@@ -80,7 +80,10 @@ void TMVAUsage(){
     //    "!H:!V:NTrees=850:MinNodeSize=2.5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.5:SeparationType=GiniIndex:nCuts=20" );
 
     // Load tensorflow plugin and book method as well
-    gPluginMgr->AddHandler("TMVA@@MethodBase", "Tensorflow", "TMVA::MethodTensorflow", "TMVATensorflow", "TVMA::MethodTensorflow(TString&,TString&,DataSetInfo&,TString&,TDirectory*)");
+    Int_t err = gSystem->Load("libTMVATensorflow.so");
+    std::cout << "Load TMVATensorflow: " << err << std::endl;
+    //TMVA::MethodTensorflow::Test();
+    gPluginMgr->AddHandler("TMVA@@MethodBase", "Tensorflow", "TMVA@@MethodTensorflow", "libMethodTensorflow", "TVMA@@MethodTensorflow(TString&,TString&,DataSetInfo&,TString&,TDirectory*)");
     factory->BookMethod(dataloader, TMVA::Types::kPlugins, "Tensorflow",
         "!H:V:FilepathGraph=test.it");
     gPluginMgr->Print();

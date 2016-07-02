@@ -58,8 +58,9 @@ namespace TMVA {
     protected:
         void AddWeightsXMLTo(void*) const;
         void ReadWeightsFromXML(void*);
+        void ReadWeightsFromStream(TFile&){}; // backward compatibility
+        void ReadWeightsFromStream(std::istream&){}; // backward compatibility
 		Bool_t HasAnalysisType(Types::EAnalysisType, UInt_t, UInt_t);
-
 
     protected:
         //tensorflow::Session* session;
