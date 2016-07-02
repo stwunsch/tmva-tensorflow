@@ -5,7 +5,7 @@
 
 #include "TMVA/MethodBase.h"
 
-#include "tensorflow/core/public/session.h"
+//#include "tensorflow/core/public/session.h"
 
 namespace TMVA {
 
@@ -62,8 +62,8 @@ namespace TMVA {
 
 
     protected:
-        tensorflow::Session* session;
-        tensorflow::GraphDef graph;
+        //tensorflow::Session* session;
+        //tensorflow::GraphDef graph;
         std::string fFilepathGraph;
 
         ClassDef(TMVA::MethodTensorflow, 1)

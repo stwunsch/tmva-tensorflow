@@ -1,3 +1,22 @@
+#include <cstdlib>
+#include <iostream>
+#include <map>
+#include <string>
+
+#include "TChain.h"
+#include "TFile.h"
+#include "TTree.h"
+#include "TString.h"
+#include "TObjString.h"
+#include "TSystem.h"
+#include "TROOT.h"
+#include "TPluginManager.h"
+
+#include "TMVA/Factory.h"
+#include "TMVA/DataLoader.h"
+#include "TMVA/Tools.h"
+#include "TMVA/TMVAGui.h"
+
 void TMVAUsage(){
     /*
      * Setup
@@ -89,4 +108,8 @@ void TMVAUsage(){
      */
 
      //TMVA::TMVAGui(outfileName);
+}
+
+int main(void){
+    TMVAUsage();
 }
