@@ -57,14 +57,14 @@ void TMVAUsage(){
     // Book methods from TMVA
     factory->BookMethod(dataloader, TMVA::Types::kFisher, "Fisher",
         "H:!V:Fisher:VarTransform=None:CreateMVAPdfs:PDFInterpolMVAPdf=Spline2:NbinsMVAPdf=50:NsmoothMVAPdf=10" );
-    factory->BookMethod(dataloader, TMVA::Types::kBDT, "BDT",
-        "!H:!V:NTrees=850:MinNodeSize=2.5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.5:SeparationType=GiniIndex:nCuts=20" );
+    //factory->BookMethod(dataloader, TMVA::Types::kBDT, "BDT",
+    //    "!H:!V:NTrees=850:MinNodeSize=2.5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.5:SeparationType=GiniIndex:nCuts=20" );
 
     // Load tensorflow plugin and book method as well
-    gPluginMgr->AddHandler("TMVA@@MethodBase", "Tensorflow", "TMVA::MethodTensorflow", "MethodTensorflow", "MethodTensorflow(TString&,TString&,DataSetInfo&,TString&)");
-    gPluginMgr->Print();
+    gPluginMgr->AddHandler("TMVA@@MethodBase", "Tensorflow", "TMVA::MethodTensorflow", "TMVATensorflow", "TVMA::MethodTensorflow(TString&,TString&,DataSetInfo&,TString&,TDirectory*)");
     factory->BookMethod(dataloader, TMVA::Types::kPlugins, "Tensorflow",
         "!H:V:FilepathGraph=test.it");
+    gPluginMgr->Print();
 
     // Train MVAs using the set of training events
     factory->TrainAllMethods();

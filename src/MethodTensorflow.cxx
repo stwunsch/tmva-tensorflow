@@ -1,5 +1,7 @@
 #include "MethodTensorflow.h"
 
+ClassImp(TMVA::MethodTensorflow)
+
 namespace TMVA{
 
     void MethodTensorflow::Init(){
@@ -26,14 +28,10 @@ namespace TMVA{
         return 0;
     }
 
-    void MethodTensorflow::AddWeightsXMLTo(void* parent) const{
+    void MethodTensorflow::AddWeightsXMLTo(void*) const{
     }
 
-    void MethodTensorflow::ReadWeightsFromXML(void* wghtnode){
-    }
-
-    void MethodTensorflow::ReadWeightsFromStream(std::istream&){
-        Log() << kERROR << "Don't use this option, it's deprecated!" << Endl;
+    void MethodTensorflow::ReadWeightsFromXML(void*){
     }
 
     void MethodTensorflow::GetHelpMessage() const{
@@ -41,7 +39,7 @@ namespace TMVA{
         Log() << kERROR << "The help message is not yet implemented!" << Endl;
     }
 
-    Bool_t TMVA::MethodTensorflow::HasAnalysisType( Types::EAnalysisType type, UInt_t numberClasses, UInt_t numberTargets ){
+    Bool_t MethodTensorflow::HasAnalysisType(Types::EAnalysisType type, UInt_t numberClasses, UInt_t){
         // Set analysis type to classification
         // TODO: implement multiclass
         if(type == Types::kClassification && numberClasses == 2) return kTRUE;

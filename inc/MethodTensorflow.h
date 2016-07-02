@@ -1,19 +1,13 @@
-/******************************************************************************
- * Stefan Wunsch, 2016                                                        *
- *                                                                            *
- * TMVA plugin for loading and executing Tensorflow graphs/models.            *
- ******************************************************************************/
-
 #ifndef ROOT_TMVA_METHODTENSORFLOW
 #define ROOT_TMVA_METHODTENSORFLOW
 
 #include <string>
 
-#include <TMVA/MethodBase.h>
+#include "TMVA/MethodBase.h"
 
 #include "tensorflow/core/public/session.h"
 
-namespace TMVA{
+namespace TMVA {
 
     class MethodTensorflow : public MethodBase {
 
@@ -40,7 +34,7 @@ namespace TMVA{
         */
         MethodTensorflow(DataSetInfo& theData,
             const TString& theWeightFile,
-            TDirectory* theTargetDir = NULL);
+            TDirectory* theTargetDir = 0);
 
         // Init the method
         void Init();
@@ -64,13 +58,15 @@ namespace TMVA{
     protected:
         void AddWeightsXMLTo(void*) const;
         void ReadWeightsFromXML(void*);
-        void ReadWeightsFromStream(std::istream&); // backward compatibility
 		Bool_t HasAnalysisType(Types::EAnalysisType, UInt_t, UInt_t);
+
 
     protected:
         tensorflow::Session* session;
         tensorflow::GraphDef graph;
         std::string fFilepathGraph;
+
+        ClassDef(TMVA::MethodTensorflow, 1)
 
     }; // class MethodTensorflow
 
